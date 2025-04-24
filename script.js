@@ -14,18 +14,18 @@ document.querySelectorAll('.emoji-btn').forEach(btn => {
 async function analyzeSentiment(text) {
   if (!text.trim()) return "neutral";
 
-  const response = await fetch("https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english", {
+  const response = await fetch("/.netlify/functions/sentiment", {
     method: "POST",
     headers: {
-      "Authorization": apiToken,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ inputs: text })
+    body: JSON.stringify({ text: text })
   });
 
   const result = await response.json();
-  return result[0]?.label.toLowerCase(); // 'positive' or 'negative'
+  return result.sentiment || "neutral";
 }
+
 
 // Handle form submission
 document.getElementById("submit-entry").addEventListener("click", async () => {
