@@ -1,8 +1,8 @@
 // 🌿 MoodSnap Navigation & Theme
 
 let pages = [
-  { url: "index.html", title: "Journal" },
-  { url: "dashboard/dashboard.html", title: "Dashboard" },
+  { url: "", title: "Journal" },
+  { url: "dashboard/", title: "Dashboard" },
 ];
 
 let nav = document.createElement('nav');
