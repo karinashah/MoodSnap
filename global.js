@@ -1,7 +1,7 @@
 // 🌿 MoodSnap Navigation & Theme
 
 let pages = [
-  { url: "", title: "Journal" },
+  { url: "", title: "Home" },
   { url: "dashboard/dashboard.html", title: "Dashboard" },
 ];
 
