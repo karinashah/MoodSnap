@@ -6,6 +6,8 @@ let pages = [
 ];
 
 let nav = document.createElement('nav');
+nav.className = "main-nav";
+
 document.body.prepend(nav);
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")

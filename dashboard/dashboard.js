@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 // Load entries from localStorage
 const logs = JSON.parse(localStorage.getItem("moodsnap-entries")) || [];
 
@@ -54,4 +55,5 @@ sortedWords.forEach(([word, count]) => {
   const li = document.createElement("li");
   li.textContent = `${word} (${count})`;
   wordList.appendChild(li);
+});
 });
