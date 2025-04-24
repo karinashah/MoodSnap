@@ -1,3 +1,24 @@
+///
+async function testSentiment() {
+  const testText = "I'm feeling really grateful and calm today.";
+
+  const response = await fetch("https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english", {
+    method: "POST",
+    headers: {
+      "Authorization": "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",  // use your real token
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ inputs: testText })
+  });
+
+  const result = await response.json();
+  console.log("🎯 Hugging Face Test Result:", result);
+}
+
+testSentiment();
+
+///
+
 let selectedMood = null;
 const apiToken = "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";
 
