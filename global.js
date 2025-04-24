@@ -2,7 +2,7 @@
 
 let pages = [
   { url: "", title: "Journal" },
-  { url: "dashboard.html", title: "Dashboard" },
+  { url: "dashboard/dashboard.html", title: "Dashboard" },
 ];
 
 // 🧭 Create and insert nav bar
