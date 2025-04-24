@@ -152,3 +152,38 @@ footer {
   margin-top: 0.5rem;
 }
 
+nav.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  background-color: #fefcf9;
+  box-shadow: 0 4px 12px var(--shadow);
+  border-radius: 2rem;
+  margin: 1rem auto 2rem;
+  max-width: 90%;
+}
+
+nav.main-nav a {
+  text-decoration: none;
+  color: var(--deep-purple);
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+nav.main-nav a:hover {
+  background-color: var(--lotus-pink);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+nav.main-nav a.current {
+  background-color: var(--sage-green);
+  color: white;
+}
+
+
