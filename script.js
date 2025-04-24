@@ -1,7 +1,5 @@
 let selectedMood = null;
 
-const apiToken = "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";
-
 // 💬 Mood emoji selection
 document.querySelectorAll('.emoji-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -11,21 +9,11 @@ document.querySelectorAll('.emoji-btn').forEach(btn => {
   });
 });
 
-// 🧠 Sentiment analysis using Hugging Face API
-async function analyzeSentiment(text) {
-  if (!text.trim()) return "neutral";
+const sentiment = new Sentiment();
 
-  const response = await fetch("https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${apiToken}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ inputs: text })
-  });
-
-  const result = await response.json();
-  return result[0]?.label.toLowerCase(); // 'positive' or 'negative'
+function analyzeSentiment(text) {
+  const result = sentiment.analyze(text);
+  return result.score > 0 ? "positive" : result.score < 0 ? "negative" : "neutral";
 }
 
 // ✨ Log journal entry
