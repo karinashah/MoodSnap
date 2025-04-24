@@ -1,5 +1,4 @@
 let selectedMood = null;
-const apiToken = "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";
 
 // Handle emoji selection
 document.querySelectorAll('.emoji-btn').forEach(btn => {
@@ -10,24 +9,26 @@ document.querySelectorAll('.emoji-btn').forEach(btn => {
   });
 });
 
-// Fetch sentiment from Hugging Face API
+// Function to call your Netlify sentiment function
 async function analyzeSentiment(text) {
   if (!text.trim()) return "neutral";
 
-  const response = await fetch("/.netlify/functions/sentiment", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ text: text })
-  });
+  try {
+    const response = await fetch("/.netlify/functions/sentiment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: text })
+    });
 
-  const result = await response.json();
-  return result.sentiment || "neutral";
+    const result = await response.json();
+    return result.sentiment || "neutral";
+  } catch (error) {
+    console.error("Sentiment analysis error:", error);
+    return "neutral";
+  }
 }
 
-
-// Handle form submission
+// Handle journal submission
 document.getElementById("submit-entry").addEventListener("click", async () => {
   const gratitude = document.getElementById("gratitude").value;
   const compassion = document.getElementById("compassion").value;
@@ -35,11 +36,11 @@ document.getElementById("submit-entry").addEventListener("click", async () => {
   const intention = document.getElementById("intention").value;
 
   if (!selectedMood) {
-    alert("Please select a mood emoji.");
+    alert("Please select a mood emoji before logging.");
     return;
   }
 
-  // Analyze sentiment for each field
+  // Analyze sentiment for each section
   const [gratSent, compSent, actSent, intentSent] = await Promise.all([
     analyzeSentiment(gratitude),
     analyzeSentiment(compassion),
@@ -61,13 +62,13 @@ document.getElementById("submit-entry").addEventListener("click", async () => {
   logs.push(entry);
   localStorage.setItem("moodsnap-entries", JSON.stringify(logs));
 
-  // Show confirmation
+  // Show confirmation and reset UI
   const confirmation = document.getElementById("confirmation");
   confirmation.style.display = "block";
   confirmation.textContent = "🌸 Your reflection has been saved with love.";
+
   setTimeout(() => {
     confirmation.style.display = "none";
-    // Clear form
     document.querySelectorAll("textarea").forEach(t => t.value = "");
     selectedMood = null;
     document.querySelectorAll(".emoji-btn").forEach(btn => btn.classList.remove("selected"));
