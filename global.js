@@ -2,7 +2,7 @@
 
 let pages = [
   { url: "", title: "Journal" },
-  { url: "dashboard/", title: "Dashboard" },
+  { url: "dashboard/dashboard.html", title: "Dashboard" },
 ];
 
 let nav = document.createElement('nav');
