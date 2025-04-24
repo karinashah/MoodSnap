@@ -1,6 +1,5 @@
 let selectedMood = null;
 
-// Paste your real Hugging Face token below (no "Bearer" prefix here)
 const apiToken = "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";
 
 // 💬 Mood emoji selection
