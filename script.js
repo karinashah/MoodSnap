@@ -5,7 +5,7 @@ async function testSentiment() {
   const response = await fetch("https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english", {
     method: "POST",
     headers: {
-      "Authorization": "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",  // use your real token
+      "Authorization": "Bearer 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",  // use your real token
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ inputs: testText })
@@ -20,7 +20,7 @@ testSentiment();
 ///
 
 let selectedMood = null;
-const apiToken = "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";
+const apiToken = "Bearer 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";
 
 // Handle emoji selection
 document.querySelectorAll('.emoji-btn').forEach(btn => {
