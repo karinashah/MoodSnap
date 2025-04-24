@@ -25,7 +25,7 @@ export async function handler(event) {
       };
     }
 
-    const hf_token = process.env.HF_TOKEN;
+    const hf_token = process.env["moodsnap-sentiment"];
     const response = await fetch("https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english", {
       method: "POST",
       headers: {
