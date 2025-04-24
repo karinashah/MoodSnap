@@ -1,30 +1,129 @@
+/* 🪷 Base Styles */
+:root {
+  --bg: #f9f6f1;
+  --lotus-pink: #eac9d5;
+  --sage-green: #bcd1c5;
+  --deep-purple: #7a5c89;
+  --sunrise-gold: #f2d694;
+  --text: #3a3a3a;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --font: 'Zen Maru Gothic', sans-serif;
+}
+
 body {
-  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 2rem 1rem;
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 🪷 Header */
+header h1 {
+  color: var(--deep-purple);
+  font-size: 2.8rem;
+  margin-bottom: 0.2rem;
+}
+
+.tagline {
+  font-size: 1rem;
+  color: var(--sage-green);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+/* 🧘 Mood & Input Sections */
+#journal-entry {
+  background-color: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px var(--shadow);
   padding: 2rem;
-  background: #f7f7fa;
-  color: #333;
-  text-align: center;
+  max-width: 700px;
+  width: 100%;
 }
 
-button {
+.mood-section h2,
+.input-section label {
+  color: var(--deep-purple);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.emoji-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.emoji-btn {
   font-size: 2rem;
-  margin: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem;
   border: none;
-  border-radius: 8px;
+  background-color: var(--lotus-pink);
+  border-radius: 50%;
+  transition: all 0.2s ease;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-button.selected {
-  background-color: #cce5ff;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+.emoji-btn:hover,
+.emoji-btn.selected {
+  background-color: var(--deep-purple);
+  color: white;
+  transform: scale(1.1);
 }
 
 textarea {
-  width: 80%;
-  height: 80px;
-  margin-top: 1rem;
-  padding: 0.5rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #ddd;
+  margin-bottom: 1.5rem;
   font-size: 1rem;
+  background-color: #fffdfc;
+  box-shadow: inset 0 1px 4px var(--shadow);
+  resize: vertical;
+}
+
+/* ✨ Submit Button */
+#submit-entry {
+  background-color: var(--sage-green);
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submit-entry:hover {
+  background-color: var(--deep-purple);
+}
+
+/* ✅ Confirmation */
+#confirmation {
+  margin-top: 1rem;
+  color: var(--sunrise-gold);
+  font-weight: bold;
+}
+
+/* 🌺 Footer */
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--deep-purple);
+}
+
+.quote {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.footnote {
+  color: #aaa;
 }

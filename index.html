@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoodSnap</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoodSnap – Daily Journal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>MoodSnap 💬</h1>
 
-  <section id="mood-logger">
-    <h2>How are you feeling?</h2>
-    <div id="emoji-buttons">
-      <button>😄</button>
-      <button>😐</button>
-      <button>😔</button>
-      <button>😤</button>
-    </div>
+  <header>
+    <h1>🪷 MoodSnap</h1>
+    <p class="tagline">A gentle space to reflect, grow, and glow from within.</p>
+  </header>
 
-    <textarea id="mood-note" placeholder="Want to add a quick note?"></textarea>
-    <button id="log-mood">Log My Mood</button>
-  </section>
+  <main id="journal-entry">
 
-  <div id="log-confirmation" style="display: none;">✅ Mood logged!</div>
+    <section class="mood-section">
+      <h2>🧠 How are you feeling today?</h2>
+      <div class="emoji-buttons">
+        <button class="emoji-btn">😄</button>
+        <button class="emoji-btn">🙂</button>
+        <button class="emoji-btn">😐</button>
+        <button class="emoji-btn">😔</button>
+        <button class="emoji-btn">😤</button>
+      </div>
+    </section>
+
+    <section class="input-section">
+      <label for="gratitude">💌 One thing you're grateful for today (your Bright Spot):</label>
+      <textarea id="gratitude" placeholder="e.g., My morning walk through the trees..."></textarea>
+
+      <label for="compassion">🪷 One compassionate thing you did today:</label>
+      <textarea id="compassion" placeholder="e.g., I let a friend talk without giving advice..."></textarea>
+
+      <label for="actions">🤍 Did you hurt or help someone today? Reflect here:</label>
+      <textarea id="actions" placeholder="e.g., Helped a classmate / Spoke harshly to my sibling..."></textarea>
+
+      <label for="intention">🔮 What is your intention for tomorrow?</label>
+      <textarea id="intention" placeholder="e.g., To speak gently and pause before reacting..."></textarea>
+    </section>
+
+    <button id="submit-entry">✨ Log My Day</button>
+
+    <div id="confirmation" style="display:none;">🌸 Your reflection has been saved with love.</div>
+
+  </main>
+
+  <footer>
+    <p class="quote">“Ahimsa is not just action — it is a way of being. Be kind to yourself too.”</p>
+    <p class="footnote">Made with love, compassion, and lotus petals 🌿</p>
+  </footer>
+
 </body>
 </html>
