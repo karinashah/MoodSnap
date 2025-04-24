@@ -1,28 +1,9 @@
-///
-async function testSentiment() {
-  const testText = "I'm feeling really grateful and calm today.";
-
-  const response = await fetch("https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english", {
-    method: "POST",
-    headers: {
-      "Authorization": "Bearer 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",  // use your real token
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ inputs: testText })
-  });
-
-  const result = await response.json();
-  console.log("🎯 Hugging Face Test Result:", result);
-}
-
-testSentiment();
-
-///
-
 let selectedMood = null;
-const apiToken = "Bearer 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";
 
-// Handle emoji selection
+// Paste your real Hugging Face token below (no "Bearer" prefix here)
+const apiToken = "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";
+
+// 💬 Mood emoji selection
 document.querySelectorAll('.emoji-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     selectedMood = btn.textContent;
@@ -31,14 +12,14 @@ document.querySelectorAll('.emoji-btn').forEach(btn => {
   });
 });
 
-// Fetch sentiment from Hugging Face API
+// 🧠 Sentiment analysis using Hugging Face API
 async function analyzeSentiment(text) {
   if (!text.trim()) return "neutral";
 
   const response = await fetch("https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english", {
     method: "POST",
     headers: {
-      "Authorization": apiToken,
+      "Authorization": `Bearer ${apiToken}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ inputs: text })
@@ -48,7 +29,7 @@ async function analyzeSentiment(text) {
   return result[0]?.label.toLowerCase(); // 'positive' or 'negative'
 }
 
-// Handle form submission
+// ✨ Log journal entry
 document.getElementById("submit-entry").addEventListener("click", async () => {
   const gratitude = document.getElementById("gratitude").value;
   const compassion = document.getElementById("compassion").value;
@@ -60,7 +41,7 @@ document.getElementById("submit-entry").addEventListener("click", async () => {
     return;
   }
 
-  // Analyze sentiment for each field
+  // Sentiment analysis for each section
   const [gratSent, compSent, actSent, intentSent] = await Promise.all([
     analyzeSentiment(gratitude),
     analyzeSentiment(compassion),
@@ -82,13 +63,13 @@ document.getElementById("submit-entry").addEventListener("click", async () => {
   logs.push(entry);
   localStorage.setItem("moodsnap-entries", JSON.stringify(logs));
 
-  // Show confirmation
+  // ✅ Confirmation
   const confirmation = document.getElementById("confirmation");
   confirmation.style.display = "block";
   confirmation.textContent = "🌸 Your reflection has been saved with love.";
+
   setTimeout(() => {
     confirmation.style.display = "none";
-    // Clear form
     document.querySelectorAll("textarea").forEach(t => t.value = "");
     selectedMood = null;
     document.querySelectorAll(".emoji-btn").forEach(btn => btn.classList.remove("selected"));
